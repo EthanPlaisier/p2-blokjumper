@@ -5,12 +5,12 @@ const dino = document.querySelector('.dino');
         const startBtn = document.querySelector('.start-btn');
         let score = 0;
         let speed = 5;
-        let gameRunning = false;
+        let gameRunning = false; // Het game gaat niet runnen tot dat je op start drukt //
 
         document.addEventListener('keydown', jump);
         startBtn.addEventListener('click', startGame);
 
-        function startGame() {
+        function startGame() { // Zorgt ervoor dat het gamerunning systeem werkt en geactiveerd word //
             if (!gameRunning) {
                 gameRunning = true;
                 gameoverDisplay.style.display = 'none';
@@ -20,7 +20,7 @@ const dino = document.querySelector('.dino');
             }
         }
 
-        function jump(event) {
+        function jump(event) { // Om te springen word het blok gewoon een stuk omhoog geduwd en je heb dan een cooldown om te zorgen dat je het niet kan spammen. //
             if (event.code === 'Space' && dino.style.transform !== 'translateY(-100px)') {
                 dino.style.transform = 'translateY(-100px)';
                 setTimeout(() => {
@@ -29,7 +29,7 @@ const dino = document.querySelector('.dino');
             }
         }
 
-        function checkCollision() {
+        function checkCollision() { // Dit is zodat het blok een bots systeem heeft en als het hek aangeraakt word dan eindigt het spel //
             const dinoRect = dino.getBoundingClientRect();
             const obstacleRect = obstacle.getBoundingClientRect();
 
@@ -43,7 +43,7 @@ const dino = document.querySelector('.dino');
             }
         }
 
-        function endGame() {
+        function endGame() { // stopt het runnen van het game zodat het niet verder gaat //
             gameRunning = false;
             gameoverDisplay.style.display = 'block';
             startBtn.style.display = 'block';
@@ -51,7 +51,7 @@ const dino = document.querySelector('.dino');
             resetGame();
         }
 
-        function resetGame() {
+        function resetGame() { // Game en score word gereset, snelheid ook. //
             score = 0;
             speed = 5;
             updateScore();
@@ -61,21 +61,21 @@ const dino = document.querySelector('.dino');
             dino.style.transform = 'translateY(0)';
         }
 
-        function updateScore() {
+        function updateScore() { // Zodat het score omhoog gaat als je speelt //
             scoreDisplay.textContent = 'Score: ' + score;
         }
 
-        function increaseSpeed() {
+        function increaseSpeed() { // Het snelheid verhoogt hoe langer je leeft, het kan moeilijker gemaakt worden of makkelijker. //
             if (score % 100 === 0 && score !== 0) {
                 speed += 1;
                 obstacle.style.animationDuration = (1 / speed) + 's';
             }
         }
 
-        function animateGame() {
+        function animateGame() { // Animatie van het game, zorgt dat het hek naar je toe komt. //
             let obstaclePosition = window.innerWidth;
         
-            function moveObstacle() {
+            function moveObstacle() { // Zorgt ervoor dat het obstakel naar links echt beweegt, ik wist zelf niet precies 100% hoe het werkte. //
                 if (gameRunning) {
                     checkCollision();
                     increaseSpeed();

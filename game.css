@@ -3,13 +3,13 @@ body {
     padding: 0;
     overflow: hidden;
 }
-.game-container {
+.game-container { /* Zorgt ervoor dat het game een soort frame heeft */
     position: relative;
     width: 100vw;
     height: 90vh;
     background-color: #f7f7f7;
 }
-.dino {
+.dino { /* Het blok. */
     position: absolute;
     bottom: 0;
     left: 50px;
@@ -18,7 +18,7 @@ body {
     background-color: #333;
     transition: transform 0.1s;
 }
-.score {
+.score { /* Dit is zodat het score links boven staat. */
     position: absolute;
     top: 10px;
     left: 10px;
@@ -32,7 +32,7 @@ body {
     font-size: 30px;
     display: none;
 }
-.start-btn {
+.start-btn { /* Start knop, background color is voor het kleur ervan. */
     position: absolute;
     top: 40%;
     left: 50%;
@@ -46,7 +46,7 @@ body {
     outline: none;
     display: block;
 }
-.obstacle {
+.obstacle { /* Ook een belangrijk stuk code dat zorgt dat het hek beweegt maar zorgt ook dat het obstakel meer op een hek lijkt dan een stuk blok. */
     position: absolute;
     bottom: 0;
     right: 0;
@@ -54,10 +54,10 @@ body {
     height: 50px;
     background-color: red;
     animation: moveObstacle linear infinite;
-    animation-duration: 1s; /* Set initial animation duration */
+    animation-duration: 1s;
 }
 
-@keyframes moveObstacle {
+@keyframes moveObstacle { /* Ook een belangrijk stuk code dat zorgt dat het hek beweegt met 20 pixels elk stap. */
     to {
         left: -20px;
     }
